@@ -1,0 +1,46 @@
+apply plugin: rootProject.ext.plugins.android
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.sampleMinSdkVersion
+        targetSdkVersion rootProject.ext.android.sampleTargetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            zipAlignEnabled false
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            debuggable false
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.yanzhenjie.andserver:api:2.0.2'
+//    compile rootProject.ext.dependencies.andserverApi
+    annotationProcessor rootProject.ext.dependencies.andserverProcessor
+
+    compile rootProject.ext.dependencies.design
+    compile rootProject.ext.dependencies.appCompat
+    compile rootProject.ext.dependencies.loading
+
+    compile rootProject.ext.dependencies.json
+    compile rootProject.ext.dependencies.commonsLang
+    compile rootProject.ext.dependencies.commonsCollections
+}
